@@ -1,0 +1,137 @@
+.wrapper {
+  min-height: 100vh;
+}
+
+.container {
+  padding: 128px 56px;
+  display: flex;
+}
+
+.content {
+  margin: 0px auto;
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  width: 60%;
+  background: #ffffff;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
+}
+
+.leftContent {
+  flex: 1;
+  height: auto;
+}
+
+.leftMain {
+  height: 300px;
+  border-radius: 8px;
+  margin: 24px;
+  padding: 36px;
+  background-image: url("../../../assets/auth-bg.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.leftInfo {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.infoIconTitle {
+  font-size: 36px;
+  color: #ffffff;
+}
+
+.infoTextTitle {
+  font-size: 24px;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.infoIcon {
+  font-size: 20px;
+  color: #ffffff;
+}
+
+.infoText {
+  font-size: 16px;
+  font-weight: 600;
+  color: #ffffff;
+}
+/* right */
+.rightContent {
+  flex: 1;
+  padding: 24px;
+}
+
+.rightTitle {
+  font-size: 24px;
+  color: #008aff;
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+
+.rightFormGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.labelRight {
+  color: #008aff;
+  font-size: 16px;
+}
+
+.rightInput {
+  width: 100% !important;
+}
+
+.linkToLogin {
+  text-decoration: none;
+  color: #008aff;
+  font-weight: 600;
+}
+
+.btnRegis {
+  margin-top: 16px;
+  width: 100%;
+  padding: 8px;
+  color: #ffffff;
+  font-weight: 600;
+  background-color: #008aff;
+  border: none;
+  border-radius: 8px;
+}
+
+.btnRegis:hover {
+  cursor: pointer;
+}
+
+@media screen and (max-width: 1280px) {
+  .content {
+    width: 70%;
+  }
+}
+
+@media screen and (max-width: 1080px) {
+  .content {
+    width: 90%;
+  }
+}
+
+@media screen and (max-width: 780px) {
+  .content {
+    width: 100%;
+  }
+
+  .leftContent {
+    display: none;
+  }
+}

@@ -1,0 +1,72 @@
+.wrapper {
+  margin: 24px 0px;
+}
+
+.title {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 24px;
+  text-align: center;
+  color: #008aff;
+}
+
+.description {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 22px;
+  text-align: center;
+  color: #464444;
+  margin-top: 8px;
+}
+
+.cardContainer {
+  margin-top: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 16px;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  background: #ffffff;
+  border: 1px solid #008aff;
+  border-radius: 5px;
+  padding: 16px 128px;
+}
+
+.cardTitle {
+  font-style: normal;
+  font-weight: 300;
+  font-size: 18px;
+  line-height: 19px;
+  text-align: center;
+  color: #000000;
+}
+
+.cardContent {
+  display: flex;
+  align-items: center;
+  gap: 36px;
+}
+
+.label {
+  float: left;
+  text-align: center;
+}
+
+.groupRadio {
+  display: flex;
+  justify-content: space-between;
+  flex: 1;
+}
+
+input[type="radio"] {
+  -ms-transform: scale(1.5); /* IE 9 */
+  -webkit-transform: scale(1.5); /* Chrome, Safari, Opera */
+  transform: scale(1.5);
+  cursor: pointer;
+}

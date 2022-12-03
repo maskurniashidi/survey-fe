@@ -1,0 +1,27 @@
+.wrapper {
+  min-height: 100vh;
+  background-color: #fff;
+}
+
+.content {
+  margin: 96px auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 50%;
+}
+
+.title {
+  font-family: "Inter";
+  font-weight: 600;
+  text-align: center;
+  font-size: 36px;
+  color: #008aff;
+  line-height: 36px;
+}
+
+.imgLanding {
+  width: 500px;
+  margin-top: 24px;
+}

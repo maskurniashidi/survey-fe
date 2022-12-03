@@ -1,0 +1,58 @@
+.wrapper {
+  min-height: 100vh;
+}
+
+.container {
+  margin: 56px auto;
+  width: 85%;
+  /* background-color: red; */
+}
+
+.content {
+  background: #ffffff;
+  border: 1px solid #c4c4c4;
+  border-radius: 10px;
+  padding: 36px 48px;
+}
+
+.title {
+  font-style: normal;
+  font-weight: 600;
+  font-size: 24px;
+  color: #008aff;
+  margin-bottom: 24px;
+}
+
+.formGroup {
+  display: flex;
+  gap: 24px;
+}
+
+.leftGroup,
+.rightGroup {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.formField {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.labelForm {
+  color: #008aff;
+  font-size: 18px;
+}
+
+.btnAdd {
+  background: #008aff;
+  border-radius: 5px;
+  padding: 8px 16px;
+  color: #ffffff;
+  border: none;
+  margin-top: 16px;
+  cursor: pointer;
+}

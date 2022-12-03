@@ -1,0 +1,36 @@
+.wrapper {
+  min-height: 100vh;
+}
+
+.container {
+  margin: 56px auto;
+  width: 85%;
+  /* background-color: red; */
+}
+
+.content {
+  background: #ffffff;
+  border: 1px solid #c4c4c4;
+  border-radius: 10px;
+  padding: 36px 48px;
+}
+
+.title {
+  font-style: normal;
+  font-weight: 600;
+  font-size: 32px;
+  color: #008aff;
+}
+
+.mainContent {
+  display: flex;
+  gap: 24px;
+}
+
+.leftContent {
+  flex: 1;
+}
+
+.rightContent {
+  flex: 1;
+}

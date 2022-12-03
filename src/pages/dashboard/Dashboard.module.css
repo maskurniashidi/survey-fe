@@ -1,0 +1,77 @@
+.wrapper {
+  min-height: 100vh;
+}
+
+.container {
+  margin: 56px auto;
+  width: 85%;
+  /* background-color: red; */
+}
+
+.infoTop {
+  background: #008aff;
+  border-radius: 10px;
+  padding: 36px 24px;
+}
+
+.infoTopTitle {
+  font-weight: 600;
+  font-size: 32px;
+  line-height: 39px;
+  color: #ffffff;
+}
+
+.infoTopDesc {
+  margin-top: 8px;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 29px;
+  color: #ffffff;
+}
+
+.cardBox {
+  margin-top: 36px;
+  display: flex;
+  gap: 24px;
+}
+
+.card {
+  text-decoration: none;
+  flex: 1;
+  background: rgba(78, 174, 255, 0.1);
+  border: 1px solid #c4c4c4;
+  border-radius: 10px;
+  padding: 24px 24px;
+}
+
+.topCard {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.icon {
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 500;
+  color: #008aff;
+}
+
+.topCardInfo {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 36px;
+  color: #008aff;
+}
+
+.topCardSum {
+  margin-top: 16px;
+  text-align: center;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 48px;
+  color: #008aff;
+  margin-bottom: 16px;
+}

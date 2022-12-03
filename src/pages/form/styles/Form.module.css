@@ -1,0 +1,120 @@
+.wrapper {
+  min-height: 100vh;
+}
+
+.container {
+  margin: 56px auto;
+  width: 85%;
+  /* background-color: red; */
+}
+
+.infoTop {
+  background: #008aff;
+  border-radius: 10px;
+  padding: 36px 24px;
+}
+
+.infoTopTitle {
+  font-weight: 600;
+  font-size: 32px;
+  line-height: 39px;
+  color: #ffffff;
+}
+
+.infoTopDesc {
+  margin-top: 8px;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 29px;
+  color: #ffffff;
+}
+
+/* main */
+.main {
+  margin-top: 36px;
+}
+
+.tabs {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 2px solid #c4c4c4;
+}
+
+.tab {
+  flex: 1;
+  background: transparent;
+  border: none;
+  font-size: 20px;
+  padding: 16px 0px;
+}
+
+.blankContent {
+  margin-top: 36px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.imgDoc {
+  width: 150px;
+}
+
+.addText {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 36px;
+  color: #c4c4c4;
+}
+
+.addFormBtn {
+  text-decoration: none;
+  background: #008aff;
+  border-radius: 5px;
+  color: #ffffff;
+  padding: 8px 24px;
+}
+
+/* card */
+.cardContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 24px;
+}
+
+.cardSurvey {
+  text-decoration: none;
+  padding: 24px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(78, 174, 255, 0.3);
+  border-radius: 10px;
+}
+
+.leftCard {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.cardIcon {
+  font-size: 28px;
+  color: #008aff;
+}
+
+.cardTitle {
+  color: #008aff;
+  font-size: 24px;
+}
+
+.cardDescription {
+  color: #464444;
+}
+
+.rightCard {
+  color: #464444;
+}
