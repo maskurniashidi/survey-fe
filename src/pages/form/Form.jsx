@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Navbar from "../../components/Navbar";
 import style from "./styles/Form.module.css";
 import DocAdd from "../../assets/doc-add.png";
@@ -15,9 +15,12 @@ function Form() {
   const [checkData, setCheckData] = useState("not null");
   const [data, setData] = useState([]);
   const [dataFinish, setDataFinish] = useState([]);
-
+  const navigate = useNavigate();
   const [dataResp, setDataResp] = useState([]);
   const [dataRespFinish, setDataRespFinish] = useState([]);
+
+  const [respFinish, setRespFinish] = useState([]);
+  const [respNotFinish, setRespNotFinish] = useState([]);
 
   let user = JSON.parse(localStorage.getItem("user"));
   let role = user.role_id;
@@ -30,6 +33,7 @@ function Form() {
 
     axios(config)
       .then(function (response) {
+        console.log(response.data.data);
         if (user.role_id === 2) {
           let dataSumFilter = response.data.data.filter((item) => item.user_id === user.id && item.totalRespondent !== 0);
           let dataFinishSumFilter = response.data.data.filter((item) => item.user_id === user.id && item.totalRespondent === 0);
@@ -40,8 +44,8 @@ function Form() {
           }
         } else {
           let dataRespSumFilter = response.data.data.filter((item) => item.totalRespondent !== 0);
-          let dataRespFinishSumFilter = response.data.data.filter((item) => item.totalRespondent === 0);
           setDataResp(dataRespSumFilter);
+          let dataRespFinishSumFilter = response.data.data.filter((item) => item.totalRespondent === 0);
           setDataRespFinish(dataRespFinishSumFilter);
         }
         setLoading(false);
@@ -51,6 +55,15 @@ function Form() {
         setLoading(false);
       });
   }, []);
+
+  const handleClickFill = (id) => {
+    localStorage.removeItem("resultAtt");
+    localStorage.removeItem("resultEff");
+    localStorage.removeItem("resultSti");
+    localStorage.removeItem("resultNov");
+    localStorage.removeItem("resultDep");
+    localStorage.removeItem("resultPer");
+  };
 
   // logic
   // filter data yg belum selesai
@@ -181,7 +194,7 @@ function Form() {
                                 <p className={style.cardDescription}>dibuat pada : {item.created_at.slice(0, 10)}</p>
                               </div>
                             </div>
-                            <Link to={`/form/fill-form/${item.id}`} className={style.rightCardBtn}>
+                            <Link to={`/form/fill-form/${item.id}`} onClick={() => handleClickFill(item.id)} className={style.rightCardBtn}>
                               Mulai
                             </Link>
                           </Link>

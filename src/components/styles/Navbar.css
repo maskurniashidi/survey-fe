@@ -12,12 +12,14 @@
   position: sticky;
   position: -webkit-sticky;
   top: 0; /* required */
+  z-index: 999;
 }
 
 .navcomp-wrapper {
   position: sticky;
   position: -webkit-sticky;
   top: 0; /* required */
+  z-index: 9999;
 }
 
 .navcomp-logo {

@@ -5,7 +5,14 @@
 .container {
   margin: 56px auto;
   width: 85%;
+  padding: 56px 0px;
+  z-index: -99;
   /* background-color: red; */
+}
+
+.content {
+  margin-bottom: 36px;
+  z-index: -99;
 }
 
 .infoTop {

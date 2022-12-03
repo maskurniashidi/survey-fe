@@ -44,10 +44,10 @@ function ResultForm() {
           let arrObj = Object.values(dataSumObject);
           const attSum = arrObj.slice(1, 7).reduce((acc, curr) => acc + curr);
           const perSum = arrObj.slice(7, 11).reduce((acc, curr) => acc + curr);
-          const novSum = arrObj.slice(11, 15).reduce((acc, curr) => acc + curr);
-          const stiSum = arrObj.slice(15, 19).reduce((acc, curr) => acc + curr);
-          const depSum = arrObj.slice(19, 23).reduce((acc, curr) => acc + curr);
-          const effSum = arrObj.slice(23, 27).reduce((acc, curr) => acc + curr);
+          const effSum = arrObj.slice(11, 15).reduce((acc, curr) => acc + curr);
+          const depSum = arrObj.slice(15, 19).reduce((acc, curr) => acc + curr);
+          const stiSum = arrObj.slice(19, 23).reduce((acc, curr) => acc + curr);
+          const novSum = arrObj.slice(23, 27).reduce((acc, curr) => acc + curr);
           initAtt = initAtt + attSum;
           initPer = initPer + perSum;
           initNov = initNov + novSum;
