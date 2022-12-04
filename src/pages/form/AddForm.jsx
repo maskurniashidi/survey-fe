@@ -6,6 +6,7 @@ import Navbar from "../../components/Navbar";
 import { DatePicker, Space, Input } from "antd";
 import dayjs from "dayjs";
 import customParseFormat from "dayjs/plugin/customParseFormat";
+import { ToastContainer, toast } from "react-toastify";
 const { TextArea } = Input;
 dayjs.extend(customParseFormat);
 function AddForm() {
@@ -29,51 +30,79 @@ function AddForm() {
       ...data,
       [e.target.name]: e.target.value,
     });
-    console.log(data);
   };
 
   const handleChangeDate = (e) => {
-    console.log(e.$D);
-    console.log(e.$M);
-    console.log(e.$y);
     setMaxDate(`${e.$y}-${e.$M + 1}-${e.$D}`);
-    console.log(maxDate);
   };
 
   const addForm = () => {
-    var dataBody = new FormData();
-    dataBody.append("appsName", data.appsName);
-    dataBody.append("appsDescription", data.appsDescription);
-    dataBody.append("appsLink", data.appsLink);
-    dataBody.append("maxTotalRespondent", data.maxTotalRespondent);
-    dataBody.append("maxDate", maxDate);
-    dataBody.append("totalRespondent", data.maxTotalRespondent);
-    dataBody.append("user_id", user_id);
-
-    var config = {
-      method: "post",
-      url: "http://127.0.0.1:8000/api/v1/survey",
-      headers: {
-        Authorization: `Bearer ${localStorage.getItem("token")}`,
-      },
-      data: dataBody,
-    };
-
-    axios(config)
-      .then(function (response) {
-        console.log(JSON.stringify(response.data));
-        alert("berhasil");
-        navigate("/form");
-      })
-      .catch(function (error) {
-        console.log(error);
-        alert("gagal");
+    if (data.maxTotalRespondent < 10) {
+      toast.error("Pastikan maksimal responden minimal 10", {
+        position: "top-center",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
       });
+    } else {
+      var dataBody = new FormData();
+      dataBody.append("appsName", data.appsName);
+      dataBody.append("appsDescription", data.appsDescription);
+      dataBody.append("appsLink", data.appsLink);
+      dataBody.append("maxTotalRespondent", data.maxTotalRespondent);
+      dataBody.append("maxDate", maxDate);
+      dataBody.append("totalRespondent", data.maxTotalRespondent);
+      dataBody.append("user_id", user_id);
+
+      var config = {
+        method: "post",
+        url: "https://api-dev.maskurdev.site/public/api/v1/survey",
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+        data: dataBody,
+      };
+
+      axios(config)
+        .then(function (response) {
+          toast.success("Buat form berhasil", {
+            position: "top-center",
+            autoClose: 1000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+          });
+          setTimeout(() => {
+            navigate("/form");
+          }, 1500);
+        })
+        .catch(function (error) {
+          console.log(error);
+          toast.error("Buat form gagal, pastikan semua terisi", {
+            position: "top-center",
+            autoClose: 2000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+          });
+        });
+    }
   };
 
   return (
     <div className={style.wrapper}>
       <Navbar type="tester" />
+      <ToastContainer position="top-center" autoClose={2000} hideProgressBar={false} newestOnTop={false} closeOnClick rtl={false} pauseOnFocusLoss draggable pauseOnHover theme="light" />
       <div className={style.container}>
         <div className={style.content}>
           <h2 className={style.title}>Buat Pertanyaan</h2>

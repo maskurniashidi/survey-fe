@@ -15,8 +15,6 @@ function Stimulation() {
     if (localStorage.getItem("resultSti")) {
       let getDataLocal = JSON.parse(localStorage.getItem("resultSti"));
       setResult(JSON.parse(localStorage.getItem("resultSti")));
-      console.log(result);
-      console.log(JSON.parse(localStorage.getItem("resultSti")));
       setLoading(false);
     } else {
       setLoading(false);

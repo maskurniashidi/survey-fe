@@ -15,8 +15,6 @@ function Perspicuity() {
     if (localStorage.getItem("resultPer")) {
       let getDataLocal = JSON.parse(localStorage.getItem("resultPer"));
       setResult(JSON.parse(localStorage.getItem("resultPer")));
-      console.log(result);
-      console.log(JSON.parse(localStorage.getItem("resultPer")));
       setLoading(false);
     } else {
       setLoading(false);

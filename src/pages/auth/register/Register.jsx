@@ -9,7 +9,7 @@ import { FaUserAlt, FaStickyNote } from "react-icons/fa";
 import { ToastContainer, toast } from "react-toastify";
 function Register() {
   const [loading, setLoading] = useState(false);
-  const [value, setValue] = useState("");
+  const [value, setValue] = useState(3);
   const [passwordVisible, setPasswordVisible] = useState(false);
   const [data, setData] = useState({
     name: "",
@@ -50,7 +50,7 @@ function Register() {
 
     var config = {
       method: "post",
-      url: "http://127.0.0.1:8000/api/auth/register",
+      url: "https://api-dev.maskurdev.site/public/api/auth/register",
       data: dataBody,
     };
 
@@ -143,7 +143,6 @@ function Register() {
               </label>
               <Select
                 className={style.rightInput}
-                defaultValue="Responden"
                 onChange={handleChangeRole}
                 options={[
                   {

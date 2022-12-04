@@ -34,3 +34,23 @@
 .rightContent {
   flex: 1;
 }
+
+.contentTitle {
+  color: #008aff;
+  font-weight: 700;
+  font-size: 20px;
+}
+
+.desc {
+  margin-bottom: 24px;
+}
+
+.backFill {
+  text-decoration: none;
+  border-radius: 8px;
+  background-color: #008aff;
+  color: #ffffff;
+  font-weight: 600;
+  margin-top: 36px !important;
+  padding: 8px 16px;
+}

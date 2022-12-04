@@ -15,8 +15,6 @@ function Dependability() {
     if (localStorage.getItem("resultDep")) {
       let getDataLocal = JSON.parse(localStorage.getItem("resultDep"));
       setResult(JSON.parse(localStorage.getItem("resultDep")));
-      console.log(result);
-      console.log(JSON.parse(localStorage.getItem("resultDep")));
       setLoading(false);
     } else {
       setLoading(false);

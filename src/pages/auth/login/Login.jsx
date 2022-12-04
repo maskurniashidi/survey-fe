@@ -20,7 +20,6 @@ function Login() {
       ...data,
       [e.target.name]: e.target.value,
     });
-    console.log(data);
   };
 
   const handleClickLogin = () => {
@@ -31,14 +30,12 @@ function Login() {
 
     var config = {
       method: "post",
-      url: "http://127.0.0.1:8000/api/auth/login",
+      url: "https://api-dev.maskurdev.site/public/api/auth/login",
       data: dataBody,
     };
 
     axios(config)
       .then(function (response) {
-        console.log(JSON.stringify(response.data));
-        console.log(response);
         localStorage.setItem("token", response.data.access_token);
         localStorage.setItem("user", JSON.stringify(response.data.user));
         setLoading(false);

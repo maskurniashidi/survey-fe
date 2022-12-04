@@ -10,7 +10,7 @@ import Efficiency from "./Efficiency";
 import Dependability from "./Dependability";
 import Stimulation from "./Stimulation";
 import Novelty from "./Novelty";
-
+import { ToastContainer, toast } from "react-toastify";
 const steps = [
   {
     title: "Attractiveness",
@@ -44,8 +44,6 @@ function FillForm() {
   const [totResp, setTotResp] = useState();
   const { id } = useParams();
   const user = JSON.parse(localStorage.getItem("user"));
-  console.log(id);
-  console.log(user);
   const [current, setCurrent] = useState(0);
   const next = () => {
     setCurrent(current + 1);
@@ -61,7 +59,7 @@ function FillForm() {
   useEffect(() => {
     var config = {
       method: "get",
-      url: `http://127.0.0.1:8000/api/v1/survey/${id}`,
+      url: `https://api-dev.maskurdev.site/public/api/v1/survey/${id}`,
     };
 
     axios(config)
@@ -117,23 +115,20 @@ function FillForm() {
 
       let config = {
         method: "post",
-        url: "http://127.0.0.1:8000/api/v1/result",
+        url: "https://api-dev.maskurdev.site/public/api/v1/result",
         data: data,
       };
 
       axios(config)
         .then(function (response) {
-          console.log(JSON.stringify(response.data));
-
           // update data survey
-
           var dataBody = JSON.stringify({
             totalRespondent: (parseInt(totResp) - 1).toString(),
           });
 
           var config = {
             method: "put",
-            url: `http://127.0.0.1:8000/api/v1/survey/${id}`,
+            url: `https://api-dev.maskurdev.site/public/api/v1/survey/${id}`,
             headers: {
               "Content-Type": "application/json",
             },
@@ -142,25 +137,54 @@ function FillForm() {
 
           axios(config)
             .then(function (response) {
-              console.log(JSON.stringify(response.data));
-              alert("behasil");
-              navigate("/form");
+              toast.success("Mengisi form berhasil", {
+                position: "top-center",
+                autoClose: 1000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+              });
+              setTimeout(() => {
+                navigate("/form");
+              }, 1500);
             })
             .catch(function (error) {
               console.log(error);
             });
         })
         .catch(function (error) {
-          alert("result gagal");
+          toast.error("Pastikan semua form terisi", {
+            position: "top-center",
+            autoClose: 2000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+          });
         });
     } else {
-      alert("isi semuanya dulu");
+      toast.error("Pastikan semua form terisi", {
+        position: "top-center",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
     }
   };
 
   return (
     <div>
       <Navbar type="tester" />
+      <ToastContainer position="top-center" autoClose={2000} hideProgressBar={false} newestOnTop={false} closeOnClick rtl={false} pauseOnFocusLoss draggable pauseOnHover theme="light" />
       <div className={style.container}>
         <div className={style.content}>
           <Steps current={current} items={items} />

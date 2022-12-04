@@ -17,8 +17,6 @@ function Attractiveness() {
     if (localStorage.getItem("resultAtt")) {
       let getDataLocal = JSON.parse(localStorage.getItem("resultAtt"));
       setResult(JSON.parse(localStorage.getItem("resultAtt")));
-      console.log(result);
-      console.log(JSON.parse(localStorage.getItem("resultAtt")));
       setLoading(false);
     } else {
       setLoading(false);

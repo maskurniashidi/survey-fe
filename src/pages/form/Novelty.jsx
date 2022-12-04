@@ -15,8 +15,6 @@ function Novelty() {
     if (localStorage.getItem("resultNov")) {
       let getDataLocal = JSON.parse(localStorage.getItem("resultNov"));
       setResult(JSON.parse(localStorage.getItem("resultNov")));
-      console.log(result);
-      console.log(JSON.parse(localStorage.getItem("resultNov")));
       setLoading(false);
     } else {
       setLoading(false);

@@ -28,25 +28,45 @@ function Form() {
   useEffect(() => {
     var config = {
       method: "get",
-      url: "http://127.0.0.1:8000/api/v1/survey",
+      url: "https://api-dev.maskurdev.site/public/api/v1/survey",
     };
 
     axios(config)
       .then(function (response) {
-        console.log(response.data.data);
-        if (user.role_id === 2) {
-          let dataSumFilter = response.data.data.filter((item) => item.user_id === user.id && item.totalRespondent !== 0);
-          let dataFinishSumFilter = response.data.data.filter((item) => item.user_id === user.id && item.totalRespondent === 0);
+        if (user.role_id == 2) {
+          let dataSumFilter = response.data.data.filter((item) => item.user_id == user.id && item.totalRespondent != 0);
+          let dataFinishSumFilter = response.data.data.filter((item) => item.user_id == user.id && item.totalRespondent == 0);
           setData(dataSumFilter);
           setDataFinish(dataFinishSumFilter);
           if (dataSumFilter.length === 0) {
             setCheckData("null");
           }
         } else {
-          let dataRespSumFilter = response.data.data.filter((item) => item.totalRespondent !== 0);
-          setDataResp(dataRespSumFilter);
-          let dataRespFinishSumFilter = response.data.data.filter((item) => item.totalRespondent === 0);
-          setDataRespFinish(dataRespFinishSumFilter);
+          // let dataRespSumFilter = response.data.data.filter((item) => item.totalRespondent != 0);
+          // let dataRespFinishSumFilter = response.data.data.filter((item) => item.totalRespondent == 0);
+          // setDataResp(dataRespSumFilter);
+          // setDataRespFinish(dataRespFinishSumFilter);
+          // logic
+          // filter data yg belum selesai
+          // looping data
+          // cari satu satu, apakah di result ada id_user ini. pake find
+          // jika iya
+          // tambahkan data tsb, ke data yg sudah diisini/kuisioner selesai
+          //jika tidak
+          // tambahkan data tsb, ke data list kuisioner
+          let tempResp = [];
+          let tempFinishResp = [];
+          for (let i = 0; i < response.data.data.length; i++) {
+            let checkData = response.data.data[i];
+            let myArray = checkData.result;
+            if (myArray.find((x) => x.user_id == user.id) == undefined && [checkData].filter((item) => item.totalRespondent != 0).length != 0) {
+              tempResp.push(checkData);
+              setDataResp(tempResp);
+            } else if (myArray.find((x) => x.user_id == user.id) != undefined || [checkData].filter((item) => item.totalRespondent != 0).length == 0) {
+              tempFinishResp.push(checkData);
+              setDataRespFinish(tempFinishResp);
+            }
+          }
         }
         setLoading(false);
       })
@@ -64,15 +84,6 @@ function Form() {
     localStorage.removeItem("resultDep");
     localStorage.removeItem("resultPer");
   };
-
-  // logic
-  // filter data yg belum selesai
-  // looping data
-  // cari satu satu, apakah di result ada id_user ini. pake find
-  // jika iya
-  // tambahkan data tsb, ke data yg sudah diisini/kuisioner selesai
-  //jika tidak
-  // tambahkan data tsb, ke data list kuisioner
 
   return (
     <div className={style.wrapper}>
@@ -94,7 +105,7 @@ function Form() {
                 <p className={style.infoTopDesc}>Mulai pengamalan testing dengan mudah dan tepat </p>
               </div>
               <div className={style.main}>
-                {role === 2 && (
+                {user.role_id == 2 && (
                   <div className={style.tabs}>
                     <button onClick={() => setTabsType("kuisioner berjalan")} className={style.tab}>
                       Kuisoner Berjalan
@@ -105,7 +116,7 @@ function Form() {
                   </div>
                 )}
 
-                {role === 3 && (
+                {user.role_id == 3 && (
                   <div className={style.tabs}>
                     <button onClick={() => setTabsType("kuisioner berjalan")} className={style.tab}>
                       List Kuisioner
@@ -116,7 +127,7 @@ function Form() {
                   </div>
                 )}
 
-                {role === 2 && (
+                {user.role_id == 2 && (
                   <div className={style.mainContent}>
                     {tabsType === "kuisioner berjalan" && (
                       <div>
@@ -181,7 +192,7 @@ function Form() {
                   </div>
                 )}
 
-                {role === 3 && (
+                {user.role_id == 3 && (
                   <div className={style.mainContent}>
                     {tabsType === "kuisioner berjalan" && (
                       <div className={style.cardContainer}>
@@ -201,15 +212,15 @@ function Form() {
                         ))}
                       </div>
                     )}
-                    {tabsType === "kuisioner selesai" && (
+                    {tabsType == "kuisioner selesai" && (
                       <div className={style.cardContainer}>
-                        {dataRespFinish.map(() => (
+                        {dataRespFinish.map((item) => (
                           <Link className={style.cardSurvey}>
                             <div className={style.leftCard}>
                               <HiClipboardDocumentList className={style.cardIcon} />
                               <div className={style.cardInfo}>
-                                <h4 className={style.cardTitle}>Form Aplikasi 2</h4>
-                                <p className={style.cardDescription}>Kamis, 14 November 2022</p>
+                                <h4 className={style.cardTitle}>{item.appsName}</h4>
+                                <p className={style.cardDescription}>dibuat pada : {item.created_at.slice(0, 10)}</p>
                               </div>
                             </div>
                           </Link>

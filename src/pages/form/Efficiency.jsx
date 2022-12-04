@@ -15,8 +15,6 @@ function Efficiency() {
     if (localStorage.getItem("resultEff")) {
       let getDataLocal = JSON.parse(localStorage.getItem("resultEff"));
       setResult(JSON.parse(localStorage.getItem("resultEff")));
-      console.log(result);
-      console.log(JSON.parse(localStorage.getItem("resultEff")));
       setLoading(false);
     } else {
       setLoading(false);

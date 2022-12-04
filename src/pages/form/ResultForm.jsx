@@ -28,11 +28,8 @@ function ResultForm() {
 
     axios(config)
       .then(function (response) {
-        console.log(JSON.stringify(response.data));
-        console.log(response.data.data);
         setTotalResp(response.data.data.result.length);
         const dataResultSum = response.data.data.result;
-        console.log(dataResultSum.length);
         let initAtt = 0;
         let initPer = 0;
         let initNov = 0;
@@ -112,13 +109,15 @@ function ResultForm() {
             </div>
             <div className={style.rightContent}>
               <h3 className={style.contentTitle}>Uraian Hasil : </h3>
-              <p>
+              <p className={style.desc}>
                 Lorem ipsum dolor sit amet consectetur, adipisicing elit. Molestias, animi. Harum eaque fugit aliquid. Harum iure culpa, perspiciatis provident fugiat doloribus assumenda in id repellendus laborum. Illum architecto
                 voluptates quae repellendus, ipsa reprehenderit adipisci. In inventore nihil obcaecati, molestiae reiciendis voluptatem aut ipsa veniam animi beatae libero omnis consequatur recusandae, cum facilis nesciunt, ea explicabo
                 similique fuga repudiandae provident unde! Aut, ducimus quaerat! Quam neque sunt dolore ipsa accusamus hic, doloremque laboriosam in tempore, numquam necessitatibus ratione laudantium magni odit voluptate expedita
                 exercitationem. Dolorem sit temporibus deserunt, aspernatur perspiciatis quaerat necessitatibus eius ipsam labore aut magni quam tempore unde dolorum.
               </p>
-              <Link to="/form">Kembali</Link>
+              <Link className={style.backFill} to="/form">
+                Kembali
+              </Link>
             </div>
           </div>
         </div>
