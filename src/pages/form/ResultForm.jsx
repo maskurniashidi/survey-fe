@@ -26,13 +26,14 @@ function ResultForm() {
   useEffect(() => {
     var config = {
       method: "get",
-      url: `http://127.0.0.1:8000/api/v1/survey/${id}`,
+      url: `https://api-dev.maskurdev.site/public/api/v1/survey/${id}`,
     };
 
     axios(config)
       .then(function (response) {
         setDetail(response.data.data);
         setTotalResp(response.data.data.result.length);
+        console.log(response.data.data);
         const dataResultSum = response.data.data.result;
         let initAtt = 0;
         let initPer = 0;
@@ -40,21 +41,22 @@ function ResultForm() {
         let initSti = 0;
         let initDep = 0;
         let initEff = 0;
+
         for (let i = 0; i < response.data.data.result.length; i++) {
           let dataSumObject = response.data.data.result[i];
           let arrObj = Object.values(dataSumObject);
-          const attSum = arrObj.slice(1, 7).reduce((acc, curr) => acc + curr);
-          const perSum = arrObj.slice(7, 11).reduce((acc, curr) => acc + curr);
-          const effSum = arrObj.slice(11, 15).reduce((acc, curr) => acc + curr);
-          const depSum = arrObj.slice(15, 19).reduce((acc, curr) => acc + curr);
-          const stiSum = arrObj.slice(19, 23).reduce((acc, curr) => acc + curr);
-          const novSum = arrObj.slice(23, 27).reduce((acc, curr) => acc + curr);
-          initAtt = initAtt + attSum;
-          initPer = initPer + perSum;
-          initNov = initNov + novSum;
-          initSti = initSti + stiSum;
-          initDep = initDep + depSum;
-          initEff = initEff + effSum;
+          const attSum = arrObj.slice(1, 7).reduce((acc, curr) => parseInt(acc) + parseInt(curr));
+          const perSum = arrObj.slice(7, 11).reduce((acc, curr) => parseInt(acc) + parseInt(curr));
+          const effSum = arrObj.slice(11, 15).reduce((acc, curr) => parseInt(acc) + parseInt(curr));
+          const depSum = arrObj.slice(15, 19).reduce((acc, curr) => parseInt(acc) + parseInt(curr));
+          const stiSum = arrObj.slice(19, 23).reduce((acc, curr) => parseInt(acc) + parseInt(curr));
+          const novSum = arrObj.slice(23, 27).reduce((acc, curr) => parseInt(acc) + parseInt(curr));
+          initAtt = parseInt(initAtt) + parseInt(attSum);
+          initPer = parseInt(initPer) + parseInt(perSum);
+          initNov = parseInt(initNov) + parseInt(novSum);
+          initSti = parseInt(initSti) + parseInt(stiSum);
+          initDep = parseInt(initDep) + parseInt(depSum);
+          initEff = parseInt(initEff) + parseInt(effSum);
           setAtt(initAtt);
           setPer(initPer);
           setNov(initNov);
@@ -146,23 +148,27 @@ function ResultForm() {
                   <h2 className={style.infoHasilTitle}>Keterangan</h2>
                   <div className={style.infoText}>
                     <p className={style.textTitle}>Attractiveness</p>
-                    <p className={style.textDesc}>: {((att / totalResp / 42) * 100).toLocaleString()}%</p>
+                    <p className={style.textDesc}>: {((att / totalResp / 42) * 100).toLocaleString("id-ID")}%</p>
                   </div>
                   <div className={style.infoText}>
                     <p className={style.textTitle}>Perspiculity</p>
-                    <p className={style.textDesc}>: {((per / totalResp / 42) * 100).toLocaleString()}%</p>
+                    <p className={style.textDesc}>: {((per / totalResp / 42) * 100).toLocaleString("id-ID")}%</p>
                   </div>
                   <div className={style.infoText}>
                     <p className={style.textTitle}>Efficiency</p>
-                    <p className={style.textDesc}>: {((eff / totalResp / 42) * 100).toLocaleString()}%</p>
+                    <p className={style.textDesc}>: {((eff / totalResp / 42) * 100).toLocaleString("id-ID")}%</p>
                   </div>
-                  {/* <div className={style.infoText}>
-                    <p className={style.textTitle}>Simulation</p>
-                    <p className={style.textDesc}>: {((sim / totalResp / 42) * 100).toLocaleString()}%</p>
-                  </div> */}
+                  <div className={style.infoText}>
+                    <p className={style.textTitle}>Dependability</p>
+                    <p className={style.textDesc}>: {((dep / totalResp / 42) * 100).toLocaleString("id-ID")}%</p>
+                  </div>
+                  <div className={style.infoText}>
+                    <p className={style.textTitle}>Stimulation</p>
+                    <p className={style.textDesc}>: {((sti / totalResp / 42) * 100).toLocaleString("id-ID")}%</p>
+                  </div>
                   <div className={style.infoText}>
                     <p className={style.textTitle}>Novelty</p>
-                    <p className={style.textDesc}>: {((nov / totalResp / 42) * 100).toLocaleString()}%</p>
+                    <p className={style.textDesc}>: {((nov / totalResp / 42) * 100).toLocaleString("id-ID")}%</p>
                   </div>
                 </div>
                 <Link className={style.backFill} to="/form">

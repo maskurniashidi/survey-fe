@@ -5,10 +5,12 @@ body {
   font-family: "Inter", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  font-family: "Inter", sans-serif !important;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
+  font-family: "Inter", sans-serif !important;
 }
 
 /* http://meyerweb.com/eric/tools/css/reset/ 
@@ -103,7 +105,7 @@ video {
   font-size: 100%;
   font: inherit;
   vertical-align: baseline;
-  font-family: "Inter", sans-serif;
+  font-family: "Inter", sans-serif !important;
   line-height: 24px;
 }
 /* HTML5 display-role reset for older browsers */

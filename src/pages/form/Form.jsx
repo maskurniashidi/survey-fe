@@ -28,7 +28,7 @@ function Form() {
   useEffect(() => {
     var config = {
       method: "get",
-      url: "http://127.0.0.1:8000/api/v1/survey",
+      url: "https://api-dev.maskurdev.site/public/api/v1/survey",
     };
 
     axios(config)
@@ -116,10 +116,10 @@ function Form() {
                 {user.role_id == 2 && (
                   <div className={style.tabs}>
                     <button onClick={() => setTabsType("kuisioner berjalan")} className={tabsType === "kuisioner berjalan" ? style.tabColor : style.tab}>
-                      Kuisoner Berjalan
+                      Kuisioner Berjalan
                     </button>
                     <button onClick={() => setTabsType("kuisioner selesai")} className={tabsType === "kuisioner selesai" ? style.tabColor : style.tab}>
-                      Kuisoner Selesai
+                      Kuisioner Selesai
                     </button>
                   </div>
                 )}
@@ -127,10 +127,10 @@ function Form() {
                 {user.role_id == 3 && (
                   <div className={style.tabs}>
                     <button onClick={() => setTabsType("kuisioner berjalan")} className={tabsType === "kuisioner berjalan" ? style.tabColor : style.tab}>
-                      List Kuisioner
+                      Kuisioner Tersedia
                     </button>
                     <button onClick={() => setTabsType("kuisioner selesai")} className={tabsType === "kuisioner selesai" ? style.tabColor : style.tab}>
-                      Kuisoner Selesai
+                      Kuisioner Selesai
                     </button>
                   </div>
                 )}

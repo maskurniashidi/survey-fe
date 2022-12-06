@@ -59,7 +59,7 @@ function FillForm() {
   useEffect(() => {
     var config = {
       method: "get",
-      url: `http://127.0.0.1:8000/api/v1/survey/${id}`,
+      url: `https://api-dev.maskurdev.site/public/api/v1/survey/${id}`,
     };
 
     axios(config)
@@ -115,7 +115,7 @@ function FillForm() {
 
       let config = {
         method: "post",
-        url: "http://127.0.0.1:8000/api/v1/result",
+        url: "https://api-dev.maskurdev.site/public/api/v1/result",
         data: data,
       };
 
@@ -128,7 +128,7 @@ function FillForm() {
 
           var config = {
             method: "put",
-            url: `http://127.0.0.1:8000/api/v1/survey/${id}`,
+            url: `https://api-dev.maskurdev.site/public/api/v1/survey/${id}`,
             headers: {
               "Content-Type": "application/json",
             },

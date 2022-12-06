@@ -30,7 +30,7 @@ function Login() {
 
     var config = {
       method: "post",
-      url: "http://127.0.0.1:8000/api/auth/login",
+      url: "https://api-dev.maskurdev.site/public/api/auth/login",
       data: dataBody,
     };
 
