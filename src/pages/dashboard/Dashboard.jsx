@@ -71,10 +71,18 @@ function Dashboard() {
       ) : (
         <div className={style.container}>
           <div className={style.content}>
-            <div className={style.infoTop}>
-              <h2 className={style.infoTopTitle}>Selamat Datang di Kuisionerin</h2>
-              <p className={style.infoTopDesc}>Mulai pengamalan testing dengan mudah dan tepat</p>
-            </div>
+            {user.role_id == 2 && (
+              <div className={style.infoTop}>
+                <h2 className={style.infoTopTitle}>Selamat Datang di Kuisionerin</h2>
+                <p className={style.infoTopDesc}>Mulai pengamalan testing dengan mudah dan tepat</p>
+              </div>
+            )}
+            {user.role_id == 3 && (
+              <div className={style.infoTop}>
+                <h2 className={style.infoTopTitle}>Hai RESPONDEN ! </h2>
+                <p className={style.infoTopDesc}>Mulai pengamalan testing dengan mudah dan tepat </p>
+              </div>
+            )}
             {user.role_id == 2 && (
               <div className={style.cardBox}>
                 <Link to="/form" className={style.card}>

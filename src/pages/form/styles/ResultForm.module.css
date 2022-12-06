@@ -54,3 +54,70 @@
   margin-top: 36px !important;
   padding: 8px 16px;
 }
+
+.info {
+  margin-bottom: 16px;
+}
+
+.infoText {
+  display: flex;
+}
+
+.textTitle {
+  flex: 1;
+  margin-top: 8px;
+}
+
+.textDesc {
+  flex: 2;
+  margin-top: 8px;
+}
+
+.infoHasil {
+  margin-bottom: 16px;
+}
+
+.infoHasilTitle {
+  color: #008aff;
+  margin-top: 16px;
+  font-weight: 600;
+}
+
+@media (max-width: 1530px) {
+  .textTitle {
+    flex: 1;
+  }
+  .textDesc {
+    flex: 1 !important;
+  }
+}
+
+@media (max-width: 1128px) {
+  .mainContent {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .textTitle {
+    flex: 1;
+  }
+
+  .textDesc {
+    flex: 2 !important;
+  }
+}
+
+@media (max-width: 500px) {
+  .infoText {
+    flex-direction: column;
+  }
+
+  .textTitle {
+    flex: 1;
+  }
+
+  .textDesc {
+    flex: 2 !important;
+  }
+}

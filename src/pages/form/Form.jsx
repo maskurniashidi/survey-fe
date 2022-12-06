@@ -28,7 +28,7 @@ function Form() {
   useEffect(() => {
     var config = {
       method: "get",
-      url: "https://api-dev.maskurdev.site/public/api/v1/survey",
+      url: "http://127.0.0.1:8000/api/v1/survey",
     };
 
     axios(config)
@@ -100,17 +100,25 @@ function Form() {
 
           <div className={style.container}>
             <div className={style.content}>
-              <div className={style.infoTop}>
-                <h2 className={style.infoTopTitle}>Mulai buat pertanyaan dan dapatkan hasil testing segera !</h2>
-                <p className={style.infoTopDesc}>Mulai pengamalan testing dengan mudah dan tepat </p>
-              </div>
+              {user.role_id == 2 && (
+                <div className={style.infoTop}>
+                  <h2 className={style.infoTopTitle}>Selamat Datang di Kuisionerin</h2>
+                  <p className={style.infoTopDesc}>Mulai pengamalan testing dengan mudah dan tepat</p>
+                </div>
+              )}
+              {user.role_id == 3 && (
+                <div className={style.infoTop}>
+                  <h2 className={style.infoTopTitle}>Hai RESPONDEN ! </h2>
+                  <p className={style.infoTopDesc}>Mulai pengamalan testing dengan mudah dan tepat </p>
+                </div>
+              )}
               <div className={style.main}>
                 {user.role_id == 2 && (
                   <div className={style.tabs}>
-                    <button onClick={() => setTabsType("kuisioner berjalan")} className={style.tab}>
+                    <button onClick={() => setTabsType("kuisioner berjalan")} className={tabsType === "kuisioner berjalan" ? style.tabColor : style.tab}>
                       Kuisoner Berjalan
                     </button>
-                    <button onClick={() => setTabsType("kuisioner selesai")} className={style.tab}>
+                    <button onClick={() => setTabsType("kuisioner selesai")} className={tabsType === "kuisioner selesai" ? style.tabColor : style.tab}>
                       Kuisoner Selesai
                     </button>
                   </div>
@@ -118,10 +126,10 @@ function Form() {
 
                 {user.role_id == 3 && (
                   <div className={style.tabs}>
-                    <button onClick={() => setTabsType("kuisioner berjalan")} className={style.tab}>
+                    <button onClick={() => setTabsType("kuisioner berjalan")} className={tabsType === "kuisioner berjalan" ? style.tabColor : style.tab}>
                       List Kuisioner
                     </button>
-                    <button onClick={() => setTabsType("kuisioner selesai")} className={style.tab}>
+                    <button onClick={() => setTabsType("kuisioner selesai")} className={tabsType === "kuisioner selesai" ? style.tabColor : style.tab}>
                       Kuisoner Selesai
                     </button>
                   </div>
@@ -177,7 +185,7 @@ function Form() {
                                   <HiClipboardDocumentList className={style.cardIcon} />
                                   <div className={style.cardInfo}>
                                     <h4 className={style.cardTitle}>{item.appsName}</h4>
-                                    <p className={style.cardDescription}>dibuat pada : {item.created_at.slice(0, 10)}</p>
+                                    <p className={style.cardDescription}>Dibuat pada : {item.created_at.slice(0, 10)}</p>
                                   </div>
                                 </div>
                                 <Link to={`/form/result-form/${item.id}`} className={style.rightCardBtn}>
@@ -202,10 +210,10 @@ function Form() {
                               <HiClipboardDocumentList className={style.cardIcon} />
                               <div className={style.cardInfo}>
                                 <h4 className={style.cardTitle}>{item.appsName}</h4>
-                                <p className={style.cardDescription}>dibuat pada : {item.created_at.slice(0, 10)}</p>
+                                <p className={style.cardDescription}>Dibuat pada : {item.created_at.slice(0, 10)}</p>
                               </div>
                             </div>
-                            <Link to={`/form/fill-form/${item.id}`} onClick={() => handleClickFill(item.id)} className={style.rightCardBtn}>
+                            <Link to={`/form/detail-app/${item.id}`} onClick={() => handleClickFill(item.id)} className={style.rightCardBtn}>
                               Mulai
                             </Link>
                           </Link>
@@ -220,7 +228,7 @@ function Form() {
                               <HiClipboardDocumentList className={style.cardIcon} />
                               <div className={style.cardInfo}>
                                 <h4 className={style.cardTitle}>{item.appsName}</h4>
-                                <p className={style.cardDescription}>dibuat pada : {item.created_at.slice(0, 10)}</p>
+                                <p className={style.cardDescription}>Dibuat pada : {item.created_at.slice(0, 10)}</p>
                               </div>
                             </div>
                           </Link>

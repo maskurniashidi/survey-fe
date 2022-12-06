@@ -3,7 +3,7 @@
 }
 
 .container {
-  margin: 56px auto;
+  margin: 24px auto !important;
   width: 85%;
   padding: 56px 0px;
   z-index: -99;
@@ -45,15 +45,17 @@
 .tabs {
   display: flex;
   justify-content: space-between;
-  border-bottom: 2px solid #c4c4c4;
+  /* border-bottom: 2px solid #c4c4c4; */
 }
 
 .tab {
+  cursor: pointer;
   flex: 1;
   background: transparent;
   border: none;
   font-size: 20px;
   padding: 16px 0px;
+  border-bottom: 2px solid #c4c4c4;
 }
 
 .blankContent {
@@ -124,4 +126,20 @@
 
 .rightCard {
   color: #464444;
+}
+
+.tabColor {
+  flex: 1;
+  background: transparent;
+  border: none;
+  font-size: 20px;
+  padding: 16px 0px;
+  color: #008aff !important;
+  border-bottom: 2px solid #008aff;
+  cursor: pointer;
+}
+
+.rightCardBtn {
+  text-decoration: none;
+  color: #008aff;
 }

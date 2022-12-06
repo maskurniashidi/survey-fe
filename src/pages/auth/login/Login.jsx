@@ -30,7 +30,7 @@ function Login() {
 
     var config = {
       method: "post",
-      url: "https://api-dev.maskurdev.site/public/api/auth/login",
+      url: "http://127.0.0.1:8000/api/auth/login",
       data: dataBody,
     };
 
@@ -84,15 +84,11 @@ function Login() {
               </div>
               <div className={style.leftInfo}>
                 <FaStickyNote className={style.infoIcon} />
-                <p className={style.infoText}>Buat pertanyaan sesuai dengan template</p>
+                <p className={style.infoText}>Nikmati kemudahan testing aplikasi</p>
               </div>
               <div className={style.leftInfo}>
                 <FaStickyNote className={style.infoIcon} />
-                <p className={style.infoText}>Ubah template pertanyaan sesuai keinginan Anda</p>
-              </div>
-              <div className={style.leftInfo}>
-                <FaStickyNote className={style.infoIcon} />
-                <p className={style.infoText}>Dapatkan hasil kuisioner dengan tepat</p>
+                <p className={style.infoText}>Hemat waktu Anda untuk testing dengan bantuan Kuisionerin</p>
               </div>
             </div>
           </div>

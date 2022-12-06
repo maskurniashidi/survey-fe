@@ -50,7 +50,7 @@ function Register() {
 
     var config = {
       method: "post",
-      url: "https://api-dev.maskurdev.site/public/api/auth/register",
+      url: "http://127.0.0.1:8000/api/auth/register",
       data: dataBody,
     };
 

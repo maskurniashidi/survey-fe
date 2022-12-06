@@ -6,10 +6,13 @@ import style from "./styles/ResultForm.module.css";
 
 import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend } from "chart.js";
 import { Bar } from "react-chartjs-2";
+import { Skeleton } from "antd";
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
 
 function ResultForm() {
+  const [detail, setDetail] = useState({});
+  const [loading, setLoading] = useState(true);
   const [result, setResult] = useState();
   const [totalResp, setTotalResp] = useState(0);
   const { id } = useParams();
@@ -23,11 +26,12 @@ function ResultForm() {
   useEffect(() => {
     var config = {
       method: "get",
-      url: "http://127.0.0.1:8000/api/v1/survey/1",
+      url: `http://127.0.0.1:8000/api/v1/survey/${id}`,
     };
 
     axios(config)
       .then(function (response) {
+        setDetail(response.data.data);
         setTotalResp(response.data.data.result.length);
         const dataResultSum = response.data.data.result;
         let initAtt = 0;
@@ -58,10 +62,12 @@ function ResultForm() {
           setDep(initDep);
           setEff(initEff);
           console.log(att);
+          setLoading(false);
         }
       })
       .catch(function (error) {
         console.log(error);
+        setLoading(false);
       });
   }, []);
 
@@ -85,7 +91,7 @@ function ResultForm() {
     },
   };
 
-  const labels = ["Attractiveness", "Perspicuity", "Novelty", "Simulation", "Dependability", "Efficiency"];
+  const labels = ["Attractiveness", "Perspicuity", "Efficiency", "Dependability", "Simulation", "Novelty"];
 
   var data = {
     labels,
@@ -100,28 +106,73 @@ function ResultForm() {
   return (
     <div>
       <Navbar type="tester" />
-      <div className={style.container}>
-        <div className={style.content}>
-          <h2 className={style.title}>Hasil</h2>
-          <div className={style.mainContent}>
-            <div className={style.leftContent}>
-              <Bar options={options} data={data} />
-            </div>
-            <div className={style.rightContent}>
-              <h3 className={style.contentTitle}>Uraian Hasil : </h3>
-              <p className={style.desc}>
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Molestias, animi. Harum eaque fugit aliquid. Harum iure culpa, perspiciatis provident fugiat doloribus assumenda in id repellendus laborum. Illum architecto
-                voluptates quae repellendus, ipsa reprehenderit adipisci. In inventore nihil obcaecati, molestiae reiciendis voluptatem aut ipsa veniam animi beatae libero omnis consequatur recusandae, cum facilis nesciunt, ea explicabo
-                similique fuga repudiandae provident unde! Aut, ducimus quaerat! Quam neque sunt dolore ipsa accusamus hic, doloremque laboriosam in tempore, numquam necessitatibus ratione laudantium magni odit voluptate expedita
-                exercitationem. Dolorem sit temporibus deserunt, aspernatur perspiciatis quaerat necessitatibus eius ipsam labore aut magni quam tempore unde dolorum.
-              </p>
-              <Link className={style.backFill} to="/form">
-                Kembali
-              </Link>
+      {loading ? (
+        <Skeleton />
+      ) : (
+        <div className={style.container}>
+          <div className={style.content}>
+            <h2 className={style.title}>Hasil</h2>
+            <div className={style.mainContent}>
+              <div className={style.leftContent}>
+                <Bar options={options} data={data} />
+              </div>
+              <div className={style.rightContent}>
+                {/* <h3 className={style.contentTitle}>Uraian Hasil : </h3> */}
+
+                <div className={style.info}>
+                  <h2 className={style.infoHasilTitle}>Dskripsi Aplikasi</h2>
+                  <div className={style.infoText}>
+                    <p className={style.textTitle}>Nama Aplikasi</p>
+                    <p className={style.textDesc}>: {detail.appsName}</p>
+                  </div>
+                  <div className={style.infoText}>
+                    <p className={style.textTitle}>Link Aplikasi</p>
+                    <p className={style.textDesc}>: {detail.appsLink}</p>
+                  </div>
+                  <div className={style.infoText}>
+                    <p className={style.textTitle}>Jumlah Responden</p>
+                    <p className={style.textDesc}>: {detail.maxTotalRespondent}</p>
+                  </div>
+                  <div className={style.infoText}>
+                    <p className={style.textTitle}>Dibuat pada</p>
+                    <p className={style.textDesc}>: {detail.created_at.slice(0, 10)}</p>
+                  </div>
+                  <div className={style.infoText}>
+                    <p className={style.textTitle}>Deskripsi Aplikasi</p>
+                    <p className={style.textDesc}>: {detail.appsDescription}</p>
+                  </div>
+                </div>
+                <div className={style.infoHasil}>
+                  <h2 className={style.infoHasilTitle}>Keterangan</h2>
+                  <div className={style.infoText}>
+                    <p className={style.textTitle}>Attractiveness</p>
+                    <p className={style.textDesc}>: {((att / totalResp / 42) * 100).toLocaleString()}%</p>
+                  </div>
+                  <div className={style.infoText}>
+                    <p className={style.textTitle}>Perspiculity</p>
+                    <p className={style.textDesc}>: {((per / totalResp / 42) * 100).toLocaleString()}%</p>
+                  </div>
+                  <div className={style.infoText}>
+                    <p className={style.textTitle}>Efficiency</p>
+                    <p className={style.textDesc}>: {((eff / totalResp / 42) * 100).toLocaleString()}%</p>
+                  </div>
+                  {/* <div className={style.infoText}>
+                    <p className={style.textTitle}>Simulation</p>
+                    <p className={style.textDesc}>: {((sim / totalResp / 42) * 100).toLocaleString()}%</p>
+                  </div> */}
+                  <div className={style.infoText}>
+                    <p className={style.textTitle}>Novelty</p>
+                    <p className={style.textDesc}>: {((nov / totalResp / 42) * 100).toLocaleString()}%</p>
+                  </div>
+                </div>
+                <Link className={style.backFill} to="/form">
+                  Kembali
+                </Link>
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      )}
     </div>
   );
 }

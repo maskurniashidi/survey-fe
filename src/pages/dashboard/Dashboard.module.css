@@ -75,3 +75,12 @@
   color: #008aff;
   margin-bottom: 16px;
 }
+
+@media (max-width: 600px) {
+  .cardBox {
+    margin-top: 36px;
+    display: flex;
+    gap: 24px;
+    flex-direction: column;
+  }
+}

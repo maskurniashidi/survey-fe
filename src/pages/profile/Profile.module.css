@@ -1,0 +1,74 @@
+.wrapper {
+  min-height: 100vh;
+}
+
+.container {
+  margin: 56px auto;
+  width: 85%;
+}
+
+.content {
+  background: #ffffff;
+  border: 1px solid #c4c4c4;
+  border-radius: 10px;
+  padding: 36px 48px;
+}
+
+.info {
+  margin-bottom: 16px;
+}
+
+.infoText {
+  display: flex;
+}
+
+.textTitle {
+  flex: 1;
+  margin-top: 8px;
+}
+
+.textDesc {
+  flex: 3;
+  margin-top: 8px;
+}
+
+.infoHasil {
+  margin-bottom: 16px;
+}
+
+.infoHasilTitle {
+  color: #008aff;
+  margin-top: 16px;
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+
+.forGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.formField {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.imgUser {
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+}
+
+.imgContainer {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.imgProfile {
+  width: 65px;
+  height: auto;
+}
